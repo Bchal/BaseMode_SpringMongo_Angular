@@ -30,23 +30,17 @@ public class UserController {
 
 	@Autowired
 	UserBO userBO;
-
-	
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
 	public String adduser(@ModelAttribute("userForm") User user,
 			BindingResult result) {
 		userBO.savePost(user);
 		return "redirect:/";
 	}
-	
-	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public @ResponseBody Collection<User> users(Model model) {
 		List<User> userList = userBO.getAllUsers();
 		return userList;
 	}
-
-	
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public @ResponseBody Collection<User> users(Model model, @RequestParam("userid") String userId) {
 		List<User> userList = userBO.getAllUsers();
