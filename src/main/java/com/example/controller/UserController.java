@@ -36,6 +36,7 @@ public class UserController {
 		userBO.savePost(user);
 		return "redirect:/";
 	}
+	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public @ResponseBody Collection<User> users(Model model) {
 		List<User> userList = userBO.getAllUsers();
